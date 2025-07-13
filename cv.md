@@ -33,7 +33,6 @@ then
 fi
 
 now=`pwd`
-# root_src=`sed "s/ //" <<< "$now"``sed -e "s/.\//\//; s/\/edit.sh//" <<< "$0"`
 root_src=$(dirname "$0")
 log_file=$root_src/files.log
 file=$root_src/`echo $1 | cut -d/ -f2-`
