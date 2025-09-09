@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="parent">
+        <h1>Darya Neprintseva</h1>
+    </header>
+    <nav class="parent">
+        <ul class="child">
+            <li><a href="#contacts">Contacts</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+        </ul>
+    </nav>
+    <main>
+        <p class="parent"><img src="icons/photo.jpg" alt="MY PHOTO" width="300"></p>
+        <section id="contacts" class="parent">
+        <h2 class="child">Contacts</h2>
+            <ul class="child">
+                <li>Location: Moscow, Russia</li>
+                <li>Phone: +7 925 730-37-52</li>
+                <li>Email: <a href="muza33@ya.ru">muza33@ya.ru</a></li>
+                <li>GitHub: <a href="https://github.com/mdirect">mdirect</a></li>
+            </ul>
+        </section>
+        <section id="about_me" class="parent">
+        <h2 class="child">About Me</h2>
+            <p class="child">Junior frontend developer.</p>
+        </section>
+        <section id="code" class="parent">
+        <h2 class="child">Code Example</h2>
+        <pre>
+            <code class="child">
+    text_error="Корректный ввод: ./edit.sh file str1 str2"
+
+    if [ -z $1 ]
+    then
+        echo "Не указан путь до файла"
+        echo $text_error
+        exit 1
+    fi
+    if [ -z $2 ]
+    then
+        echo "Не указана строка для замены"
+        echo $text_error
+        exit 1
+    fi
+    if [ -z $3 ]
+    then
+        echo "Не указана стока, которой заменять"
+        echo $text_error
+        exit 1
+    fi
+    
+    now=`pwd`
+    root_src=$(dirname "$0")
+    log_file=$root_src/files.log
+    file=$root_src/`echo $1 | cut -d/ -f2-`
+    
+    if [ -e $file ]
+    then
+        if [ $2 = $3 ]
+        then
+        echo "Строки совпадают. Заменять нечего"
+        else
+        if ! grep -q "$2" "$file"
+        then
+        echo "Строка \"$2\" не найдена в файле"
+        else
+        
+            # Замена в файле 
+            sed -I '' 's/'$2'/'$3'/' $file
+        
+            # Запись в лог
+            size=`ls -l $file | awk '{print $5}'`
+            date=`stat -f "%Sm" -t "%Y-%m-%d %H:%M" $file`
+            sha256=`shasum -a 256 $file | awk '{print $1}'`
+            echo $1 - $size - $date - $sha256 - sha256 >> $log_file
+        fi
+        fi
+    else
+    echo "Файл не существует"
+    fi
+            </code>
+        </pre>
+        </section>
+        <section id="skills" class="parent">
+            <h2 class="child">Skills</h2>
+            <ul class="child">
+                <li>HTML</li>
+                <li>CSS/SASS</li>
+                <li>JavaScript (Basic)</li>
+                <li>Git</li>
+                <li>C</li>
+                <li>Bash</li>
+            </ul>
+        </section>
+        <section id="education" class="parent">
+        <h2 class="child">Education</h2>
+            <ul class="child">
+                <li>University: Moscow Institute Electronics and Mathematics</li>
+                <li>Courses
+                    <ul>
+                        <li>CS50 lectures</li>
+                        <li>School 21</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="language" class="parent">
+        <h2 class="child">Language</h2>
+            <p class="child">English - Intermediate<br>Russian - Advanced</p>
+        </section>
+    </main>
+    <footer class="parent">
+        <p class="child">
+            2025 <a href="https://github.com/mdirect">GitHub</a> <a href="https://rs.school/courses/javascript-ru"><img src="icons/rs-school-logo.svg" alt="RS LOGO"  width="100"></a>
+        </p>
+    </footer> 
+</body>
+</html>
